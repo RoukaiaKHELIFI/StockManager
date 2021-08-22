@@ -1,0 +1,17 @@
+{{ form_start(form) }}
+
+  
+<div class="row">
+<div class="col-md-6">
+
+{{ form_label(form.nom, 'Nom Categorie', {'label_attr': {'class': 'form-group'}}) }}
+
+{{ form_widget(form.nom, {'attr': {'class': 'form-control'}}) }}
+
+</div>
+</div>
+<br>
+
+    <button class="btn btn-primary">{{ button_label|default('Save') }}</button>
+    
+{{ form_end(form) }}
