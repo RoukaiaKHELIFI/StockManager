@@ -29,9 +29,18 @@ class Categorie
      */
     private $scategorie;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Produit::class, mappedBy="categorie")
+     */
+    private $produit;
+
+  
+
     public function __construct()
     {
         $this->scategorie = new ArrayCollection();
+  
+        $this->produit = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -80,4 +89,36 @@ class Categorie
 
         return $this;
     }
+
+    /**
+     * @return Collection|Produit[]
+     */
+    public function getProduit(): Collection
+    {
+        return $this->produit;
+    }
+
+    public function addProduit(Produit $produit): self
+    {
+        if (!$this->produit->contains($produit)) {
+            $this->produit[] = $produit;
+            $produit->setCategorie($this);
+        }
+
+        return $this;
+    }
+
+    public function removeProduit(Produit $produit): self
+    {
+        if ($this->produit->removeElement($produit)) {
+            // set the owning side to null (unless already changed)
+            if ($produit->getCategorie() === $this) {
+                $produit->setCategorie(null);
+            }
+        }
+
+        return $this;
+    }
+
+  
 }
