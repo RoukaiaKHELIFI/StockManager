@@ -3,9 +3,11 @@
 namespace App\Entity;
 
 use App\Repository\ProduitRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use App\Entity\Categorie;
-
+use App\Entity\Achats;
 /**
  * @ORM\Entity(repositoryClass=ProduitRepository::class)
  */
@@ -59,12 +61,12 @@ class Produit
     private $status;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="text")
      */
     private $description;
 
     /**
-     * @ORM\Column(type="text")
+     * @ORM\Column(type="integer")
      */
     private $stock;
 
@@ -77,6 +79,18 @@ class Produit
      * @ORM\ManyToOne(targetEntity=Categorie::class, inversedBy="produit")
      */
     private $categorie;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Achats::class, mappedBy="produit")
+     */
+    private $achats;
+
+    
+
+    public function __construct()
+    {
+        $this->achats = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -191,7 +205,7 @@ class Produit
         return $this;
     }
 
-    public function getStock(): ?string
+    public function getStock(): ?int
     {
         return $this->stock;
     }
@@ -227,6 +241,36 @@ class Produit
         return $this;
     }
 
+    /**
+     * @return Collection|Achats[]
+     */
+    public function getAchats(): Collection
+    {
+        return $this->achats;
+    }
 
+    public function addAchat(Achats $achat): self
+    {
+        if (!$this->achats->contains($achat)) {
+            $this->achats[] = $achat;
+            $achat->setProduit($this);
+        }
+
+        return $this;
+    }
+
+    public function removeAchat(Achats $achat): self
+    {
+        if ($this->achats->removeElement($achat)) {
+            // set the owning side to null (unless already changed)
+            if ($achat->getProduit() === $this) {
+                $achat->setProduit(null);
+            }
+        }
+
+        return $this;
+    }
+
+    
 
 }

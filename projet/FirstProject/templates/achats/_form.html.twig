@@ -1,0 +1,110 @@
+{{ form_start(form) }}
+
+<div class="row">
+<div class="col-md-12">
+<div class="card">
+<div class="card-body">
+<h4 class="card-title">Ajout Achats</h4>
+<div class="row">
+<div class="col-md-6">
+
+<div class="form-group">
+
+{{ form_label(form.produit, 'Porduit', {'label_attr': {'class': 'form-group'}}) }}
+{{ form_widget(form.produit, {'attr': {'class': 'select'}}) }}
+
+
+</div>
+
+
+<div class="form-group">
+{{ form_label(form.cout, 'Cout Unitaire', {'label_attr': {'class': 'form-group'}}) }}
+
+{{ form_widget(form.cout, {'attr': {'class': 'form-control'}}) }}
+
+</div>
+
+
+
+<div class="form-group">
+{{ form_label(form.quantite, 'Quantité', {'label_attr': {'class': 'form-group'}}) }}
+
+{{ form_widget(form.quantite, {'attr': {'class': 'form-control'}}) }}
+
+</div>
+<div class="form-group">
+{{ form_label(form.sousTotal, 'Sous Total', {'label_attr': {'class': 'form-group'}}) }}
+
+{{ form_widget(form.sousTotal, {'attr': {'class': 'form-control'}}) }}
+
+</div>
+
+
+
+
+<div class="form-group">
+{{ form_label(form.total, 'Total', {'label_attr': {'class': 'form-group'}}) }}
+
+{{ form_widget(form.total, {'attr': {'class': 'form-control'}}) }}
+
+</div>
+
+<button type="submit" class="btn btn-primary">Ajouter Achats</button>
+</div>
+
+
+
+
+<div class="col-md-6">
+
+<div class="form-group">
+
+{{ form_label(form.fournisseurs, 'Fournisseurs', {'label_attr': {'class': 'form-group'}}) }}
+{{ form_widget(form.fournisseurs, {'attr': {'class': 'select'}}) }}
+
+
+</div>
+<div class="form-group">
+
+{{ form_label(form.remise, 'Remise', {'label_attr': {'class': 'form-group'}}) }}
+
+{{ form_widget(form.remise, {'attr': {'class': 'form-control'}}) }}
+
+
+</div>
+
+
+
+
+
+<div class="form-group">
+{{ form_label(form.totalNet, 'Total Net', {'label_attr': {'class': 'form-group'}}) }}
+
+{{ form_widget(form.totalNet, {'attr': {'class': 'form-control'}}) }}
+
+
+</div>
+<div class="form-group">
+{{ form_label(form.modePaie, 'Mode De Paie', {'label_attr': {'class': 'form-group'}}) }}
+
+{{ form_widget(form.modePaie, {'attr': {'class': 'form-control'}}) }}
+
+
+</div>
+<div class="form-group">
+{{ form_label(form.paye, 'Payé', {'label_attr': {'class': 'form-group'}}) }}
+
+{{ form_widget(form.paye, {'attr': {'class': 'form-control'}}) }}
+
+
+</div>
+<br><br>
+
+
+
+</div>
+</div>
+</div>
+</div>
+</div>
+{{ form_end(form) }}

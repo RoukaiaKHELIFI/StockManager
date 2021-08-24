@@ -1,0 +1,53 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Achats index{% endblock %}
+
+{% block body %}
+    <h1>Achats index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Cout</th>
+                <th>Quantite</th>
+                <th>SousTotal</th>
+                <th>Total</th>
+                <th>Remise</th>
+                <th>TotalNet</th>
+                <th>ModePaie</th>
+                
+              <th>Fournisseurs</th>
+              <th>Paye</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for achat in achats %}
+            <tr>
+                <td>{{ achat.id }}</td>
+                <td>{{ achat.cout }}</td>
+                <td>{{ achat.quantite }}</td>
+                <td>{{ achat.sousTotal }}</td>
+                <td>{{ achat.total }}</td>
+                <td>{{ achat.remise }}</td>
+                <td>{{ achat.totalNet }}</td>
+                <td>{{ achat.modePaie }}</td>
+                <td>{{ achat.paye }}</td>
+                 <td>{{ achat.fournisseurs.nom }}</td>
+               
+                <td>
+                    <a href="{{ path('achats_show', {'id': achat.id}) }}">show</a>
+                    <a href="{{ path('achats_edit', {'id': achat.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="10">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('achats_new') }}">Create new</a>
+{% endblock %}
