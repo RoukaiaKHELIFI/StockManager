@@ -31,5 +31,6 @@ final class Version20210824220854 extends AbstractMigration
         $this->addSql('ALTER TABLE achats DROP FOREIGN KEY FK_9920924E27ACDDFD');
         $this->addSql('DROP INDEX IDX_9920924E27ACDDFD ON achats');
         $this->addSql('ALTER TABLE achats DROP fournisseurs_id');
+        $this->addSql('ALTER TABLE achats DROP created_At');
     }
 }

@@ -2,10 +2,10 @@
 
 namespace App\Entity;
 
-use App\Repository\AchatsRepository;
-use Doctrine\ORM\Mapping as ORM;
-
 use App\Entity\Produit;
+
+use Doctrine\ORM\Mapping as ORM;
+use App\Repository\AchatsRepository;
 /**
  * @ORM\Entity(repositoryClass=AchatsRepository::class)
  */
@@ -195,4 +195,8 @@ class Achats
 
         return $this;
     }
+
+
+
+    
 }
