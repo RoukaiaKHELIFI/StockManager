@@ -1,0 +1,139 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Categorie index{% endblock %}
+
+{% block javascripts %}
+{{parent()}}
+<script src="{{asset('plugins/datatables/jquery.dataTables.min.js')}}"></script>
+<script src="{{asset('plugins/datatables-bs4/js/dataTables.bootstrap4.min.js')}}"></script>
+<script src="{{asset('plugins/datatables-responsive/js/dataTables.responsive.min.js')}}"></script>
+<script src="{{asset('plugins/datatables-responsive/js/responsive.bootstrap4.min.js')}}"></script>
+<script src="{{asset('plugins/datatables-buttons/js/dataTables.buttons.min.js')}}"></script>
+<script src="{{asset('plugins/datatables-buttons/js/buttons.bootstrap4.min.js')}}"></script>
+<script src="{{asset('plugins/jszip/jszip.min.js')}}"></script>
+<script src="{{asset('plugins/pdfmake/pdfmake.min.js')}}"></script>
+<script src="{{asset('plugins/pdfmake/vfs_fonts.js')}}"></script>
+<script src="{{asset('plugins/datatables-buttons/js/buttons.html5.min.js')}}"></script>
+<script src="{{asset('plugins/datatables-buttons/js/buttons.print.min.js')}}"></script>
+<script src="{{asset('plugins/datatables-buttons/js/buttons.colVis.min.js')}}"></script>
+<script src="{{asset('dist/js/adminlte.min.js')}}"></script>
+<script>
+  $(function () {
+    $("#example1").DataTable({
+      "responsive": true, "lengthChange": false, "autoWidth": false,
+    }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+    $('#example2').DataTable({
+      "paging": true,
+      "lengthChange": false,
+      "searching": false,
+      "ordering": true,
+      "info": true,
+      "autoWidth": false,
+      "responsive": true,
+    });
+  });
+</script>
+{% endblock %}
+{% block body %}
+    
+   
+<div class="page-header">
+<div class="row align-items-center">
+<div class="col">
+<h3 class="page-title">Catégories</h3>
+<ul class="breadcrumb">
+<li class="breadcrumb-item"><a href="index.html">Dashboard</a>
+</li>
+<li class="breadcrumb-item active">Catégories</li>
+</ul>
+</div>
+<div class="col-auto">
+<a href="{{ path('categorie_new') }}" class="btn btn-primary me-1">
+<i class="fas fa-plus"></i>
+</a>
+<a class="btn btn-primary filter-btn" href="javascript:void(0);" id="filter_search">
+<i class="fas fa-filter"></i>
+</a>
+</div>
+</div>
+</div>
+  
+
+<div id="filter_inputs" class="card filter-card">
+<div class="card-body pb-0">
+<div class="row">
+<div class="col-sm-6 col-md-3">
+<div class="form-group">
+<label>Name</label>
+<input type="text" class="form-control">
+</div>
+</div>
+<div class="col-sm-6 col-md-3">
+<div class="form-group">
+<label>Email</label>
+<input type="text" class="form-control">
+</div>
+</div>
+<div class="col-sm-6 col-md-3">
+<div class="form-group">
+<label>Phone</label>
+<input type="text" class="form-control">
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="row">
+<div class="col-sm-12">
+<div class="card card-table">
+<div class="card-body">
+<div class="table-responsive">
+<table id="example1" class="table">
+<thead class="thead-light">
+<tr>
+<th>ID</th>
+<th>Catégories</th>
+<th>Sous-catégorie</th>
+
+<th style="  position:relative; left:350px; " >Actions</th>
+</tr>
+</thead>
+<tbody>
+    {% for categorie in categories %}
+<tr>
+<td>{{ categorie.id }}</td>
+<td>{{ categorie.nom }}</td>
+<td>{% for scategorie in categorie.scategorie %}
+ {{scategorie.id}}.   {{scategorie.nom}}<br>
+ {% endfor %}
+                </td>
+
+<td>
+
+<div style="
+    float: right;top: 160px;
+    right: 200px;"> {{ include('categorie/_delete_form.html.twig') }}  </div>
+<a style="float:right "href="{{ path('categorie_edit', {'id': categorie.id}) }}" class="btn btn-sm btn-white text-success me-2"><i class="far fa-edit me-1"></i> Editer</a>
+<a style="float:right" href="{{ path('categorie_show', {'id': categorie.id}) }}" class="btn btn-sm btn-primary  "><i class="far fa-eye me-1"></i>Afficher</a>
+
+</td>
+</tr>
+ {% else %}
+            <tr>
+                <td colspan="3">no records found</td>
+            </tr>
+        {% endfor %}
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+{% endblock %}
+

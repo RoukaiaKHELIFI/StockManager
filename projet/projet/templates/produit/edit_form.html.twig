@@ -1,0 +1,147 @@
+{{ form_start(form) }}
+
+
+
+<div class="page-header">
+<div class="row">
+<div class="col-sm-12">
+<h3 class="page-title">Produits</h3>
+<ul class="breadcrumb">
+<li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
+<li class="breadcrumb-item"><a href="customers.html">Produits</a></li>
+<li class="breadcrumb-item active">Modifier un produit</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div class="row">
+<div class="col-md-12">
+<div class="card">
+<div class="card-body">
+<h4  id="theDiv" class="card-title">Modifier un produit</h4>
+
+<div class="row">
+<div class="col-md-6">
+<div class="form-group">
+{{ form_label(form.nom, 'Nom du produit', {'label_attr': {'class': 'control-label'}}) }}
+{{ form_widget(form.nom)}}
+</div>
+
+
+<div class="form-group">
+{{ form_label(form.categorie, 'Nom des catégories', {'label_attr': {'class': 'control-label'}}) }}
+{{ form_widget(form.categorie,{'attr':{"class" : "select"  }  }) }}
+</div>
+<div class="form-group">
+{{ form_label(form.prix, 'Prix de revient', {'label_attr': {'class': 'control-label'}}) }}
+{{ form_widget(form.prix)}}
+</div>
+<div class="form-group">
+{{ form_label(form.prix_m, 'Minimum Retail Price', {'label_attr': {'class': 'control-label'}}) }}
+{{ form_widget(form.prix_m)}}
+</div>
+<div class="form-group">
+{{ form_label(form.unite, 'Unité', {'label_attr': {'class': 'control-label'}}) }}
+{{ form_widget(form.unite)}}
+</div>
+
+<div class="form-group">
+{{ form_label(form.description, 'Description', {'label_attr': {'class': 'control-label'}}) }}
+{{ form_widget(form.description,  {'attr':{"rows" : "5" , "cols" : "5"  }  }) }}
+</div>
+
+</div>
+<div class="col-md-6">
+<div class="form-group">
+{{ form_label(form.code, 'Code du produit', {'label_attr': {'class': 'control-label'}}) }}
+{{ form_widget(form.code, { 'id': 'xd' }) }}
+
+{{ form_widget(form.try, { 'attr': {'class': 'foo'} }) }}
+
+<style>
+.foo{
+      background-color: #4CAF50; /* Green */
+  border: none;
+background-color:#BFBFBF;
+  color: white;
+  padding: 7px 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  position: absolute;
+  font-size: 16px;
+top:85px;
+right:30px;
+    float:right;
+}
+</style>
+<script>
+//document.getElementById("demo").onclick = function() {myFunction()};
+
+function myFunction() {
+const result = Math.random().toString(36).substring(2,7);
+
+  document.getElementById("xd").value = result;
+}
+
+
+</script>
+
+</div>
+<div class="form-group">
+
+{{ form_label(form.scategorie, 'Nom des  sous catégories', {'label_attr': {'class': 'control-label'}}) }}
+{{ form_widget(form.scategorie,{'attr':{"class" : "select"  }  }) }}
+
+</div>
+<div class="form-group">
+{{ form_label(form.mrp, 'MRP', {'label_attr': {'class': 'control-label'}}) }}
+{{ form_widget(form.mrp)}}
+</div>
+<div class="form-group">
+{{ form_label(form.tax, 'Product Tax', {'label_attr': {'class': 'control-label'}}) }}
+{{ form_widget(form.tax)}}
+</div>
+
+<div class="form-group">
+{{ form_label(form.status, 'Status', {'label_attr': {'class': 'control-label'}}) }}
+{{ form_widget(form.status)}}
+</div>
+<div class="form-group">
+{{ form_label(form.stock, 'Opening Stock', {'label_attr': {'class': 'control-label'}}) }}
+{{ form_widget(form.stock)}}<br>
+{{ form_label(form.image, 'Image', {'label_attr': {'class': 'control-label'}}) }}
+{{ form_widget(form.image)}}
+</div>
+</div>
+
+
+
+</div>
+
+
+<div class="text-end mt-4">
+
+<button type="submit" class="btn btn-primary ">{{ button_label|default('Ajouter ') }}</button>
+<button class="btn btn-secondary" type="reset">Cancel</button>
+
+<a href="{{ path('produit_index') }}"  class="btn btn-secondary">Revenir à la liste</a>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+{{ form_end(form) }}

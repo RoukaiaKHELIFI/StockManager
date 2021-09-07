@@ -1,0 +1,115 @@
+
+
+{% block stylesheet %}
+
+<link rel="shortcut icon" href="assets/img/favicon.png">
+
+<link rel="stylesheet" href="assets/css/bootstrap.min.css">
+
+<link rel="stylesheet" href="assets/plugins/fontawesome/css/fontawesome.min.css">
+<link rel="stylesheet" href="assets/plugins/fontawesome/css/all.min.css">
+
+<link rel="stylesheet" href="assets/css/style.css">
+{% endblock %}
+{% block body %}
+
+    
+
+<div class="main-wrapper login-body">
+<div class="login-wrapper">
+<div class="container">
+<img class="img-fluid logo-dark mb-2" src="assets/img/logo2.png" alt="Logo">
+<div class="loginbox">
+<div class="login-right">
+<div class="login-right-wrap">
+
+<h1>Login</h1>
+<p class="account-subtitle">Access to our dashboard</p>
+<form method="post">
+    {% if error %}
+        <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+    {% endif %}
+
+    {% if app.user %}
+        <div class="mb-3">
+            You are logged in as {{ app.user.username }}, <a href="{{ path('app_logout') }}">Logout</a>
+        </div>
+    {% endif %}
+
+<div class="form-group">
+
+    <label for="inputEmail" class="form-control-label">Email</label>
+    
+    <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" autocomplete="email" required autofocus>
+    </div>
+    <div class="form-group">
+    <label for="inputPassword" class="form-control-label" >Password</label>
+    <div class="pass-group">
+    
+    <input type="password" name="password" id="inputPassword" class="form-control pass-input" autocomplete="current-password" required>
+    <input type="hidden" name="_csrf_token"
+           value="{{ csrf_token('authenticate') }}"
+    >
+<span class="fas fa-eye toggle-password"></span>
+</div>
+</div>
+
+<div class="form-group">
+<div class="row">
+<div class="col-6">
+<div class="custom-control custom-checkbox">
+<input type="checkbox" class="custom-control-input" id="cb1">
+<label class="custom-control-label" for="cb1">Remember me</label>
+</div>
+</div>
+<div class="col-6 text-end">
+<a class="forgot-link" href="{{path('app_forgot_password_request')}}">Forgot Password ?</a>
+</div>
+</div>
+</div>
+<button class="btn btn-lg btn-block btn-primary w-100" type="submit">Login</button>
+<div class="login-or">
+<div class="text-center dont-have">Don't have an account yet? <a href="{{path('app_register')}}">Register</a></div>
+</div>
+
+
+
+
+</form>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+    {#
+        Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.
+        See https://symfony.com/doc/current/security/remember_me.html
+
+        <div class="checkbox mb-3">
+            <label>
+                <input type="checkbox" name="_remember_me"> Remember me
+            </label>
+        </div>
+    #}
+{% block javascripts %}
+<script src="assets/js/jquery-3.6.0.min.js"></script>
+
+<script src="assets/js/popper.min.js"></script>
+<script src="assets/js/bootstrap.min.js"></script>
+
+<script src="assets/js/feather.min.js"></script>
+
+<script src="assets/js/script.js"></script>
+ {% endblock %}
+{% endblock %}

@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Scategorie{% endblock %}
+
+{% block body %}
+    
+
+    {{ include('scategorie/_form.html.twig') }}
+
+    <a href="{{ path('scategorie_index') }}">back to list</a>
+{% endblock %}

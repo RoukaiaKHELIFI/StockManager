@@ -1,0 +1,66 @@
+{{ form_start(form) }}
+
+
+
+<div class="page-header">
+<div class="row">
+<div class="col-sm-12">
+<h3 class="page-title">Sous-Catégories</h3>
+<ul class="breadcrumb">
+<li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
+<li class="breadcrumb-item"><a href="customers.html">Sous-Catégories</a></li>
+<li class="breadcrumb-item active">Modifier une sous-catégorie</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div class="row">
+<div class="col-md-12">
+<div class="card">
+<div class="card-body">
+<h4 class="card-title">Modifier une sous-catégorie</h4>
+
+<div class="row">
+<div class="col-md-6">
+<div class="form-group">
+{{ form_label(form.nom, 'Nom de la sous-catégorie', {'label_attr': {'class': 'control-label'}}) }}
+{{ form_widget(form.nom)}}
+</div>
+</div>
+<div class="col-md-6">
+<div class="form-group">
+{{ form_label(form.categorie, 'Nom de la catégorie', {'label_attr': {'class': 'select'}}) }}
+{{ form_widget(form.categorie)}}
+</div>
+
+</div>
+</div>
+</div>
+
+<div class="text-end mt-4">
+<center>
+<button  class="btn btn-primary ">{{ button_label|default('Ajouter ') }}</button>
+<button class="btn btn-secondary" type="reset">Cancel</button>
+</center>
+<a href="{{ path('scategorie_index') }}" style="position: absolute;
+    float: right;top: 190px;
+    left: 960px;" class="btn btn-secondary">Revenir à la liste</a>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+{{ form_end(form) }}
