@@ -50,16 +50,7 @@ class ProduitType extends AbstractType
           // uses the category name property as the visible option string
                 'choice_label' => 'nom',])
               
-->add('scategorie', EntityType::class, [
-    'data_class' => null,
-    // looks for choices from this entity
-    'class' => Scategorie::class,
- 
 
-// uses the category name property as the visible option string
-    'choice_label' => 'nom',])
-
-               
      
     ;
     }

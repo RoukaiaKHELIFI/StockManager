@@ -80,10 +80,7 @@ class Produit
      */
     private $categorie;
 
-    /**
-     * @ORM\ManyToOne(targetEntity=Scategorie::class, inversedBy="produit")
-     */
-    private $scategorie;
+   
   /**
      * @ORM\OneToMany(targetEntity=Achats::class, mappedBy="produit")
      */
@@ -251,17 +248,6 @@ class Produit
         return $this;
     }
 
-    public function getScategorie(): ?Scategorie
-    {
-        return $this->scategorie;
-    }
-
-    public function setScategorie(?Scategorie $scategorie): self
-    {
-        $this->scategorie = $scategorie;
-
-        return $this;
-    }
 
     /**
      * @return Collection|Achats[]
